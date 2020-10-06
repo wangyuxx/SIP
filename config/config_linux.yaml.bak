@@ -2,7 +2,26 @@
 ########################################################################
 # Preprocessing parameters for different sensors
 ########################################################################
-### (1) Modis
+
+### (1) Sentinel-1
+
+sentinel1_params:
+    sentinel1_zip_dir: /home/l44xu/SIP/data/sentinel1_raw_zip
+    to_unzip: False
+
+    multilook_num: 1
+    low_percentage_to_remove: 0.001
+    high_percentage_to_remove: 0.001
+
+    value_cut_params:
+        to_calculate_cut_values: False
+        to_use_cut_values: False
+        min_value_cut: 10
+        max_value_cut: 1000
+
+    output_raw_img_dir: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/
+
+### (2) Modis
 
 Modis_params:
     
@@ -78,10 +97,9 @@ Modis_params:
     Modis_space_saving_params:
         to_delete_output_tiff_files: True
         to_delete_output_mosaic_files: True
-        to_delete_output_reproject_files: True
-        
+        to_delete_output_reproject_files: True        
 
-### (2) Landsat 
+### (3) Landsat 
 
 Landsat_params:
     Landsat_zip_dir: /home/l44xu/SIP/data/landsat8_raw_zip
@@ -101,23 +119,6 @@ Landsat_params:
 
     output_raw_img_dir: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs_usa/
 
-### (3) Sentinel-1
-
-MOD13Q1_params:
-    MOD13Q1_zip_dir: /home/l44xu/SIP/data/MOD13Q1_raw_zip
-    to_unzip: False
-
-    multilook_num: 1
-    low_percentage_to_remove: 0.001
-    high_percentage_to_remove: 0.001
-
-    value_cut_params:
-        to_calculate_cut_values: False
-        to_use_cut_values: False
-        min_value_cut: 10
-        max_value_cut: 1000
-
-    output_raw_img_dir: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/
 
 ### (4) RADARSAT Constelation mission (RCM) RCM SLC 
 
@@ -133,14 +134,15 @@ rcm_slc_cp_params:
 # Image data parameters
 ########################################################################
 raw_data_params:
-    raw_img_dir: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/
+    raw_img_dir: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/
     raw_img_type: tiff
-    is_geotiff: True
+    is_geotiff: False
     raw_id_str_range: #from 'start' to 'end' in the name of the raw image are the string that differenciate different scenes
-        start: 6
-        end: -5
+        start: 26
+        end: 71
     raw_band_names: # each raw scene contrain the following bands, each of which is a seperate image in 'raw_img_type' format
-        - mosaic
+        - hh
+        - hv
 
 #########################################################################
 # (A) config directories of images and ground-truth (GT) for classification
@@ -151,7 +153,7 @@ dirs:
     mask_type: png
     to_copy_data_to_dirs: False
     random_split_samples_params: 
-        to_random_split_samples: True
+        to_random_split_samples: False
         to_split_on_image_level: True
         train_proportion: 0.6
         val_proportion: 0.1
@@ -164,16 +166,16 @@ dirs:
     data: 
     
         # (1.1) training_data_dir contains images with GT in training_mask_dir for training
-        train: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/data/train
+        train: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/data/train
         
         # (1.2) val_data_dir contains images with GT in val_data_dir for validation
-        val: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/data/val
+        val: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/data/val
         
         # (1.3) test_data_dir contains images with GT in test_mask_dir for test to acquire training accuracies
-        test: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/data/test
+        test: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/data/test
         
         # (1.4) predict_data_dir contains images that do not have GT for prediction to acquire classification maps
-        predict: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/data/predict
+        predict: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/data/predict
         
     #-----------------------------------------------------------------
     # (2) config GT directories
@@ -181,16 +183,16 @@ dirs:
     mask:   
      
         # (2.1) training_mask_dir contrains one-to-one matching masks with images in training_data_dir
-        train: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/mask/train
+        train: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/mask/train
         
         # (2.2) val_mask_dir contains one-to-one matching masks with images in val_data_dir
-        val: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/mask/val
+        val: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/mask/val
         
         # (2.3) test_mask_dir contains one-to-one matching masks with images in test_data_dir
-        test: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/mask/test
+        test: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/mask/test
 
         # (2.4) predict_mask_dir contains the background pixel masks for some images in predict_data_dir
-        predict: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/mask/predict
+        predict: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/mask/predict
         
     #------------------------------------------------------------------
     # (3) config results directories
@@ -198,19 +200,19 @@ dirs:
     save:
         
         # (3.1) specify directory to save model i.e. best model log file
-        model: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/model
+        model: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model
         
         # (3.2) specify directory to save training results i.e. maps accuracies
-        train: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/train
+        train: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/train
         
         # (3.3) specify directory to save val results i.e. maps accuracies
-        val: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/val
+        val: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/val
         
         # (3.4) specify directory to save test results i.e. maps accuracies
-        test: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/test
+        test: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/test
         
         # (3.5) specify directory to save predict results i.e. maps
-        predict: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/predict
+        predict: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/predict
         
 
 ######################################################################
@@ -223,9 +225,9 @@ use_cuda: True
 
 classification_map_params:
 
-    num_classes: 19
+    num_classes: 2
    
-    to_use_colors_and_classes_in_geotiff: True
+    to_use_colors_and_classes_in_geotiff: False
  
     class_color_config_params:
         my_colors:
@@ -269,15 +271,15 @@ data_params:
         
 train_params: 
     lr: 0.0001
-    epoch: 400  
-    batch_size_train: 1 # batch_size when doing training
-    batch_size_val: 1 # batch_size when doing val and test
+    epoch: 10  
+    batch_size_train: 1000 # batch_size when doing training
+    batch_size_val: 1000 # batch_size when doing val and test
     val_inter: 1 # if 1, then validation and test are used in each epoch 
     to_test: False # is True, both validation and test data will be used to evaluate training
     prop_test: 1 # if 0.1, then 10% of all test samples are used in each epoch
     prop_train: 1 #0.01 # if 0.1, then 10% of all train samples are used in each epoch
     var: 0.00 # std of noise added to input when using images as input 
-    net_type: dip_res
+    net_type: ss_res
  
     train_mask_save_options:
         save_train_mask: False
@@ -299,12 +301,12 @@ train_params:
         use_background_pixels: True
     
 train_result_params:
-    train_log_file: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/model/ss_res_batchSize2000_epoch50_lr0.0001_time20200613223826_train.log
-    model_file: ss_res_batchSize2000_bestEpoch50_lr0.0001_time20200613225304_weights.pkl
-    train_config_file: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/model/ss_res_batchSize2000_bestEpoch50_lr0.0001_time20200613225304__time20200613225305_train_config.yaml
+    train_log_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_epoch10_lr0.0001_time20201006111306_train.log
+    model_file: ss_res_batchSize1000_bestEpoch9_lr0.0001_time20201006111617_weights.pkl
+    train_config_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_bestEpoch9_lr0.0001_time20201006111617__time20201006111617_train_config.yaml
 
 test_params:
-    batch_size: 20 # batch size for test
+    batch_size: 1000 # batch size for test
     
     test_mask_save_options:
         save_test_mask: False
@@ -324,13 +326,13 @@ test_params:
         use_background_pixels: False
 
 test_result_params:
-    test_log_file: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/model/ss_res_batchSize2000_epoch200_lr0.0001_time20200418170713_time20200418171406_test.log
-    test_config_file: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/model/ss_res_batchSize2000_bestEpoch198_lr0.0001_time20200418171144_time20200418171406_test_config.yaml
+    test_log_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_epoch10_lr0.0001_time20201006111306_time20201006113841_test.log
+    test_config_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_bestEpoch9_lr0.0001_time20201006111617_time20201006113841_test_config.yaml
     
 
 predict_params:
     
-    batch_size: 20 # batch size for predict
+    batch_size: 1000 # batch size for predict
     
     input_img_save_options:
         save_input_img: False # if True, original images will be saved
@@ -348,8 +350,8 @@ predict_params:
         use_background_pixels: True
 
 predict_result_params:
-    predict_log_file: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/model/svm_batchSize2000_epoch50_lr0.0001_time20200613003824_time20200613141535_predict.log
-    predict_config_file: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/all_data/save/model/svm_time20200613020453_time20200613141535_predict_config.yaml
+    predict_log_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_epoch10_lr0.0001_time20201006111306_time20201006114611_predict.log
+    predict_config_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_bestEpoch9_lr0.0001_time20201006111617_time20201006114611_predict_config.yaml
 
  
 
@@ -361,7 +363,7 @@ predict_result_params:
 net_params:
     
     ss_res: 
-        channels: 20
+        channels: 10
         blocks: 3
         is_bn: True
         is_dropout: False
