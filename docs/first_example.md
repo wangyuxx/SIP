@@ -14,22 +14,22 @@
 - Save drawing using default name;
 
 **Step 3: Edit config file.** 
-- Copy the ***sentinel1_config_os.yaml.bak*** in the config folder and change its name to ***sentinel1_config_os.yaml***;
-- **Make sure you have changed all dirs to your own directories**.
+- Copy the ***config_os.yaml.bak*** in the config folder and change its name to ***config_os.yaml***;
+- Find ***sentinel1_params***, ***raw_data_dir***, ***dirs***; ***For all directories in these three parameters, make sure you have changed them to your own directories***.
 
 **Step 4: Prepare label mask.** 
-- Click on ***"prepare label mask"*** under ***classification*** menu;
+- Click on ***"Get masks"*** under ***Classification*** menu;
 - First select the config file you just edited, and then select the csv file you just saved;
 - This step transfer ROIs from vectors to mask images;
-- Take a look at the png images generated in the "Image List" panel on the left;
+- Take a look at the png images generated in the ***raw_img_dir*** directory in the config file;
 
 **Step 5: Prepare all dirs and data.** 
-- Click on ***"prepare all dirs and data"*** under ***classification*** menu to prepare all training, test and prediction data. 
+- Click on ***"Prepare data"*** under ***Classification*** menu to prepare all training, test and prediction data. 
 - You need to choose the .yaml 'config' file you just edited. 
-- Once finished, take a look at all the folders generated and 'npz' files under ***data*** folders and 'png' mask files under ***mask*** folders in ***train***, ***val*** and ***test***.  
+- Once finished, go to ***dirs->data->train/val/test/predict*** folders in the config file, to open and take a look at the ***data_file.yaml*** files. Think about why ***dirs->data/predict*** has different image with train, val and test.   
 
 **Step 6: Train classifier.** 
-- Click on ***'train classifier'*** under ***classification*** menu and then choose the .yaml config file you just edited. 
+- Click on ***'Train classifier'*** under ***Classification*** menu and then choose the .yaml config file you just edited. 
 - Once training is finished, you can see the generated label map by clicking on this file in the 'Image List' panel on the left. 
 - Check ***the training and validation accuracies*** in the "train_log" file under the "save_model" folder specified in the .yaml config file you edited. 
 - Change the ***number of epoches*** in the .yaml config file and see what happens. 
