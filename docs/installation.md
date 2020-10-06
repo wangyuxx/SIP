@@ -30,7 +30,7 @@ Install the the other packages:
 ```
 conda install pandas
 conda install -c anaconda pyqt
-conda install -c conda-forge/label/cf201901 gdal
+conda install -c conda-forge/label/TEST gdal
 conda install -c anaconda scikit-image
 conda install -c anaconda scikit-learn
 conda install pyyaml
