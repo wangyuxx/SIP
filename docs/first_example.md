@@ -30,18 +30,17 @@
 
 **Step 6: Train classifier.** 
 - Click on ***'Train classifier'*** under ***Classification*** menu and then choose the .yaml config file you just edited. 
-- Once training is finished, you can see the generated label map by clicking on this file in the 'Image List' panel on the left. 
-- Check ***the training and validation accuracies*** in the "train_log" file under the "save_model" folder specified in the .yaml config file you edited. 
-- Change the ***number of epoches*** in the .yaml config file and see what happens. 
+- Once training is finished, go to ***raw_data_dir*** in the config file to take a look at the generated label maps of the training images. 
+- Go to ***dirs->save->model*** folder in the config file, check ***the training and validation accuracies*** in the ***train.log*** file.
 
 **Step 7: Test classifier.** 
-- You can optionally run ***"Test classifier"*** under ***classification***, but it will run on the same image using the trained model in Step 6. 
+- You can optionally run ***"Test classifier"*** under the ***Classification***, but it will run on the same image using the trained model in Step 6. 
 - You also need to select the same .yaml config file. 
-- Check the ***test accuracies*** in the "test_log" file under the "save_model" folder specified in the .yaml config file.  
+- Check the ***test accuracies*** in the "test.log" file under the ***dirs->save->model*** folder in the config file.  
 
 **Step 8: Predict label map on a new image.** 
-- Click on ***"Predict image"*** to run the trained model on the other scene in the folder.
-- Once it is done, you can also check the label map in the "Image List" panel. You also need to select the same .yaml config file.
-- Check the "predict_log" file under the "save_model" folder specified in the .yaml config file. 
+- Click on ***"Predict image"*** under the ***Classification*** menu to run the trained model on the other scene in the ***raw_img_dir*** folder. You also need to select the same config file. 
+- Once it is done, you can check the label map of the test image in the ***raw_img_dir*** folder.
+- Check the "predict.log" file under the ***dirs->save->model*** folder in the config file. 
 
 
