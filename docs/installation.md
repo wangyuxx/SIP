@@ -2,15 +2,15 @@
 
 **Step 1: Install anaconda.** Install conda for python 3.7: https://docs.anaconda.com/anaconda/install/linux/. For Winows, please go to https://www.anaconda.com/distribution/. 
 
-**Step 2: Create python 3.8.2 environment.** Create a conda environment 'py38' that runs on python version 3.8.2. 
+**Step 2: Create python 3.6.10 environment.** Create a conda environment 'py36' that runs on python version 3.6.10. 
 ```
-conda create -n py38 python=3.8
+conda create -n py36 python=3.6
 ```
 
-**Step 3: Activate 'py38':**
+**Step 3: Activate 'py36':**
 
 ```
-conda activate py38
+conda activate py36
 ```
 
 **Step 4: Install packages.** 
