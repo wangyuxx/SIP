@@ -43,6 +43,7 @@ Intelligent pixel-level image classification using deep neural networks.
 
 ![](./pics/classify.gif)
 
+
 **Step 1: Run app and open data.** 
 - Run SIP;
 - Open the '.json' file in ***'SIP/data/sentinel1_preprocessed_imgs'***;
@@ -55,35 +56,33 @@ Intelligent pixel-level image classification using deep neural networks.
 - Save drawing using default name;
 
 **Step 3: Edit config file.** 
-- Copy ***"sentinel1_config_os.yaml.bak"*** in the 'config' folder and change name to ***sentinel1_config_os.yaml***;
-- **Make sure you have changed all dirs to your own directories**;
+- Copy the ***config_os.yaml.bak*** in the config folder and change its name to ***config_os.yaml***;
+- Find ***sentinel1_params***, ***raw_data_dir***, ***dirs***; ***For all directories in these three parameters, make sure you have changed them to your own directories***.
 
 **Step 4: Prepare label mask.** 
-- Click on ***"prepare label mask"*** under ***classification*** menu;
+- Click on ***"Get masks"*** under ***Classification*** menu;
 - First select the config file you just edited, and then select the csv file you just saved;
 - This step transfer ROIs from vectors to mask images;
-- Take a look at the png images generated in the "Image List" panel on the left;
+- Take a look at the png images generated in the ***raw_img_dir*** directory in the config file;
 
 **Step 5: Prepare all dirs and data.** 
-- Click on ***"prepare all dirs and data"*** under ***classification*** menu to prepare all training, test and prediction data. 
+- Click on ***"Prepare data"*** under ***Classification*** menu to prepare all training, test and prediction data. 
 - You need to choose the .yaml 'config' file you just edited. 
-- Once finished, take a look at all the folders generated and 'npz' files under ***data*** folders and 'png' mask files under ***mask*** folders in ***train***, ***val*** and ***test***.  
+- Once finished, go to ***dirs->data->train/val/test/predict*** folders in the config file, to open and take a look at the ***data_file.yaml*** files. Think about why ***dirs->data/predict*** has different image with train, val and test.   
 
 **Step 6: Train classifier.** 
-- Click on ***'train classifier'*** under ***classification*** menu and then choose the .yaml config file you just edited. 
-- Once training is finished, you can see the generated label map by clicking on this file in the 'Image List' panel on the left. 
-- Check ***the training and validation accuracies*** in the "train_log" file under the "save_model" folder specified in the .yaml config file you edited. 
-- Change the ***number of epoches*** in the .yaml config file and see what happens. 
+- Click on ***'Train classifier'*** under ***Classification*** menu and then choose the .yaml config file you just edited. 
+- Once training is finished, go to ***raw_data_dir*** in the config file to take a look at the generated label maps of the training images. 
+- Go to ***dirs->save->model*** folder in the config file, check ***the training and validation accuracies*** in the ***train.log*** file.
 
 **Step 7: Test classifier.** 
-- You can optionally run ***"Test classifier"*** under ***classification***, but it will run on the same image using the trained model in Step 6. 
+- You can optionally run ***"Test classifier"*** under the ***Classification***, but it will run on the same image using the trained model in Step 6. 
 - You also need to select the same .yaml config file. 
-- Check the ***test accuracies*** in the "test_log" file under the "save_model" folder specified in the .yaml config file.  
+- Check the ***test accuracies*** in the "test.log" file under the ***dirs->save->model*** folder in the config file.  
 
 **Step 8: Predict label map on a new image.** 
-- Click on ***"Predict image"*** to run the trained model on the other scene in the folder.
-- Once it is done, you can also check the label map in the "Image List" panel. You also need to select the same .yaml config file.
-- Check the "predict_log" file under the "save_model" folder specified in the .yaml config file. 
-
+- Click on ***"Predict image"*** under the ***Classification*** menu to run the trained model on the other scene in the ***raw_img_dir*** folder. You also need to select the same config file. 
+- Once it is done, you can check the label map of the test image in the ***raw_img_dir*** folder.
+- Check the "predict.log" file under the ***dirs->save->model*** folder in the config file. 
 
 
