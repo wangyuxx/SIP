@@ -27,7 +27,7 @@ Intelligent pixel-level image classification using deep neural networks.
 
 # Documentation
 * [Installation](docs/installation.md)
-* [Tutorial](docs/tutorial.md)
+* [Tutorials](docs/tutorial.md)
 * [Data preprocessing](docs/data_preprocessing.md)
 * [Config file](docs/config_file.md)
 * [FAQ](docs/qa.md)
