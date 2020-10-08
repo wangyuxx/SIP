@@ -1,6 +1,42 @@
-# First example: Process Sentinel-1 SAR image for sea ice classification
+# Sea ice mapping from Sentinel-1 SAR images using the SIP software
 
-![](./pics/classify.gif)
+## Background
+
+The information of sea ice in polar regions is crucial for various applications including climate change study and marine navigation. As an integral part of the Earth’s climate system, sea ice interacts with both the ocean and the atmosphere and modulates the heat and moisture fluxes.
+In particular, the extent and distribution of sea ice relative to open sea water are important
+indicators of the contraction of Arctic ice caps, and has been recognized as essential climate
+variables by both world meteorological organization (WMO) and the United Nations framework
+convention on climate change (UNFCCC). Moreover, sea ice and open water distribution
+information is also important for ship navigation along Arctic sea routes that greatly shorten the
+marine transportation distance between northwestern Europe and northeastern Asia.
+
+Satellite synthetic aperture radar (SAR), due to its capability to penetrate the cloud and work
+day and night, provides a powerful tool for sea ice monitoring. The Sentinel-1 satellite generates
+immense free SAR images over the Arctic area, allowing operational monitoring of sea ice
+extend and dynamics. Nevertheless, fast and accurate discrimination of sea ice and open water
+from Sentinel-1 SAR imagery using traditional machine learning techniques is difficult due to the
+huge data volume, sensor limitations, and the complex ocean state. To address these problems
+for large-scale sea ice mapping, it is important to investigate the GPU-boosted deep neural
+network approach that is very efficient at handling the big complex data.
+
+Our projects therefore aims to design innovative deep neural network models and systems
+tailored to the Sentinel-1 SAR sea ice characteristics for fast and accurate production of sea ice
+maps over large Arctic area using big Sentinel-1 SAR data in support of the climate change
+study and Arctic ship navigation. We have been making significant progress on designing novel
+convolutional neural network (CNN) models and algorithms that are capable of not only
+efficiently capturing the subtle textual signature of sea ice from Sentinel-1 imagery but also
+accurately preserving the edges and boundaries between semantic classes. Nevertheless, the
+value and impact of our research are critically bottlenecked by the limitations of our
+desktop-based computational power, which does not allow us to leverage complex fully
+convolutional CNN architectures that proved to achieve much higher accuracy than our current
+approaches, and also prohibits us from processing a large number of Sentinel-1 images for
+achieving a meaningful spatial-temporal scale. We therefore strongly hope that we can receive
+the support from Microsoft Azure cloud computing platform, which will help us overcome our
+limitations and enable us to achieve an online cloud-based operational sea ice mapping system
+that generate high-precision pixel-level sea ice maps and ice charts that benefits various climate
+change researchers and end-users.
+
+## Steps
 
 **Step 1: Run app and open data.** 
 - Run SIP;
