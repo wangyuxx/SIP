@@ -60,9 +60,9 @@ whereas approach 2 is trained on much less image samples whose full label maps a
 
 1. ***Experiment with approach 1***
 
-   1.1. Step 1. Train approach (1) using pixels sampels collected from the training images;
-   2. Step 2. Use the trained (1) to generate full label maps for training and test images;
-   3. Step 3. Calculate training, validation and test accuracies for approach (1)
+   1. Step 1. Train approach (1) using pixels sampels collected from the training images;
+   1. Step 2. Use the trained (1) to generate full label maps for training and test images;
+   1. Step 3. Calculate training, validation and test accuracies for approach (1)
 
 * ***Experiment with approach 2***
 
