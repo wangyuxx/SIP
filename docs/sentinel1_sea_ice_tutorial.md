@@ -28,11 +28,11 @@ tailored to the Sentinel-1 SAR sea ice characteristics for fast and accurate pro
 maps over large Arctic area using big Sentinel-1 SAR data in support of the climate change
 study and Arctic ship navigation, with the following sub-objectives:
 
-1. Design novel convolutional neural network (CNN) models and algorithms that are capable of not only
+* Design novel convolutional neural network (CNN) models and algorithms that are capable of not only
 efficiently capturing the subtle textual signature of sea ice from Sentinel-1 imagery but also
 accurately preserving the edges and boundaries between semantic classes. 
 
-2. Optimize SIP to allow the use of desktop-based computational power for processing a large number of Sentinel-1 images
+* Optimize SIP to allow the use of desktop-based computational power for processing a large number of Sentinel-1 images
 in a meaningful spatial-temporal scale. Also, based on SIP, build an online cloud-based operational sea ice mapping system
 that generate high-precision pixel-level sea ice maps and ice charts that benefits various climate
 change researchers and end-users.
@@ -41,7 +41,7 @@ change researchers and end-users.
 
 As the first step, this tutorial has the following objectives:
 
-1. Compare the performance of two typical CNN architectures, i.e., (1) pixel/patch-based CNN architecture that outputs
+* ***Compare the performance of two typical CNN architectures***, i.e., (1) pixel/patch-based CNN architecture that outputs
 the label of a single pixel, and (2) image-based fully convolutional CNN architecture that outputs a label map of 
 all pixels on the image. 
 
@@ -54,27 +54,31 @@ whereas approach (2) can do a better job using some detail-perservation tricks, 
 - Approach (1) is trained on pixel samples which are relatively easier to obtain with a large quantity, 
 whereas approach 2 is trained on much less image samples whose full label maps are difficult to obtain;
 
-1.1. Experiment with approach 1:
+* ***Combine approach (1) and (2) to develop a semi-supervised classification approach*** (3).
+
+## Experiments
+
+* ***Experiment with approach 1***
 
 - Step 1. Train approach (1) using pixels sampels collected from the training images;
 - Step 2. Use the trained (1) to generate full label maps for training and test images;
 - Step 3. Calculate training, validation and test accuracies for approach (1)
 
-1.2. Experiment with approach 2:
+* ***Experiment with approach 2***
 
 - Step 1. Train approach (2) using image samples whose label maps are sparse in the sense that only 
 some pixels on these maps have labels, and most pixels do not have labels;
 - Step 2. Use the trained (2) to generate full label maps for training and test images;
 - Step 3. Calculate training, validation and test accuracies for approach (2)
 
-2. Combine approach (1) and (2) to develop a semi-supervised classification approach (3).
+* ***Experiment with approach 3***
 
 - Step 1: Train approach (2) using generated full label maps of the training images generated in 1.1 Step 2;
 - Step 2: Use the trained (2) to predict full label maps of training images, validation images and test images; 
 - Step 3: Calculate the training, validation and test accuracies of this approach, which is approach 3;
 - Step 4: Compare the accuracies of approach 1, 2, and 3 to see whether approach 3 has the highest accurcies;
 
-## Detailed procedures
+## Procedures of Experiment 1
 
 **Step 1: Run app and open data.** 
 - Run SIP;
