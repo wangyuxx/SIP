@@ -45,13 +45,13 @@ As the first step, this tutorial has the following objectives:
 the label of a single pixel, and (2) image-based fully convolutional CNN architecture that outputs a label map of 
 all pixels on the image. 
 
-- Both approaches are residual neural network;
-- Approach (1) tends to have a smaller field of view than approach (2) that 
+-- Both approaches are residual neural network;
+-- Approach (1) tends to have a smaller field of view than approach (2) that 
 has many convolutional and pooling layers, and therefore may be less efficient at texture feature extraction;
-- If the input image patch is big, approach (1) is less efficient at preserving small objects and class boundaries,
+-- If the input image patch is big, approach (1) is less efficient at preserving small objects and class boundaries,
 whereas approach (2) can do a better job using some detail-perservation tricks, e.g., skip connnections;
-- Due to patch-overlapping, approach (1) requires more GPU memories during training;
-- Approach (1) is trained on pixel samples which are relatively easier to obtain with a large quantity, 
+-- Due to patch-overlapping, approach (1) requires more GPU memories during training;
+-- Approach (1) is trained on pixel samples which are relatively easier to obtain with a large quantity, 
 whereas approach 2 is trained on much less image samples whose full label maps are difficult to obtain;
 
 * ***Combine approach (1) and (2) to develop a semi-supervised classification approach*** (3).
@@ -60,23 +60,23 @@ whereas approach 2 is trained on much less image samples whose full label maps a
 
 * ***Experiment with approach 1***
 
-- Step 1. Train approach (1) using pixels sampels collected from the training images;
-- Step 2. Use the trained (1) to generate full label maps for training and test images;
-- Step 3. Calculate training, validation and test accuracies for approach (1)
+-- Step 1. Train approach (1) using pixels sampels collected from the training images;
+-- Step 2. Use the trained (1) to generate full label maps for training and test images;
+-- Step 3. Calculate training, validation and test accuracies for approach (1)
 
 * ***Experiment with approach 2***
 
-- Step 1. Train approach (2) using image samples whose label maps are sparse in the sense that only 
+-- Step 1. Train approach (2) using image samples whose label maps are sparse in the sense that only 
 some pixels on these maps have labels, and most pixels do not have labels;
-- Step 2. Use the trained (2) to generate full label maps for training and test images;
-- Step 3. Calculate training, validation and test accuracies for approach (2)
+-- Step 2. Use the trained (2) to generate full label maps for training and test images;
+-- Step 3. Calculate training, validation and test accuracies for approach (2)
 
 * ***Experiment with approach 3***
 
-- Step 1: Train approach (2) using generated full label maps of the training images generated in 1.1 Step 2;
-- Step 2: Use the trained (2) to predict full label maps of training images, validation images and test images; 
-- Step 3: Calculate the training, validation and test accuracies of this approach, which is approach 3;
-- Step 4: Compare the accuracies of approach 1, 2, and 3 to see whether approach 3 has the highest accurcies;
+-- Step 1: Train approach (2) using generated full label maps of the training images generated in 1.1 Step 2;
+-- Step 2: Use the trained (2) to predict full label maps of training images, validation images and test images; 
+-- Step 3: Calculate the training, validation and test accuracies of this approach, which is approach 3;
+-- Step 4: Compare the accuracies of approach 1, 2, and 3 to see whether approach 3 has the highest accurcies;
 
 ## Procedures of Experiment 1
 
