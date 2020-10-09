@@ -60,23 +60,23 @@ whereas approach 2 is trained on much less image samples whose full label maps a
 
 1. ***Experiment with approach 1***
 
-   1. Step 1. Train approach (1) using pixels sampels collected from the training images;
-   1. Step 2. Use the trained (1) to generate full label maps for training and test images;
-   1. Step 3. Calculate training, validation and test accuracies for approach (1)
+   1. Train approach (1) using pixels sampels collected from the training images;
+   1. Use the trained (1) to generate full label maps for training and test images;
+   1. Calculate training, validation and test accuracies for approach (1)
 
-* ***Experiment with approach 2***
+1. ***Experiment with approach 2***
 
-  * Step 1. Train approach (2) using image samples whose label maps are sparse in the sense that only 
+    1. Train approach (2) using image samples whose label maps are sparse in the sense that only 
 some pixels on these maps have labels, and most pixels do not have labels;
-  * Step 2. Use the trained (2) to generate full label maps for training and test images;
-  * Step 3. Calculate training, validation and test accuracies for approach (2)
+    1. Use the trained (2) to generate full label maps for training and test images;
+    1. Calculate training, validation and test accuracies for approach (2)
 
-* ***Experiment with approach 3***
+1. ***Experiment with approach 3***
 
-  * Step 1: Train approach (2) using generated full label maps of the training images generated in 1.1 Step 2;
-  * Step 2: Use the trained (2) to predict full label maps of training images, validation images and test images; 
-  * Step 3: Calculate the training, validation and test accuracies of this approach, which is approach 3;
-  * Step 4: Compare the accuracies of approach 1, 2, and 3 to see whether approach 3 has the highest accurcies;
+    1. Train approach (2) using generated full label maps of the training images generated in 1.1 Step 2;
+    1. Use the trained (2) to predict full label maps of training images, validation images and test images; 
+    1. Calculate the training, validation and test accuracies of this approach, which is approach 3;
+    1. Compare the accuracies of approach 1, 2, and 3 to see whether approach 3 has the highest accurcies;
 
 ## Procedures of Experiment 1
 
