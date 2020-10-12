@@ -197,4 +197,10 @@ some pixels on these maps have labels, and most pixels do not have labels;
 
 1. **The test accuracies here should be higher than those in Experiment 1 and Experiment 2**
 
+## References
+
+1. Boulze, Hugo, Anton Korosov, and Julien Brajard. "Classification of sea ice types in Sentinel-1 SAR data using convolutional neural networks." Remote Sensing 12.13 (2020): 2165.
+
+2. Park, Jeong-Won, et al. "Classification of sea ice types in Sentinel-1 synthetic aperture radar images." The Cryosphere 14.8 (2020): 2629-2645.
+
 
