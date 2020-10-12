@@ -56,7 +56,7 @@ whereas approach 2 is trained on much less image samples whose full label maps a
 
 * ***Combine approach (1) and (2) to develop a semi-supervised classification approach*** (3).
 
-**Table 1. The comparison of three approaches.**
+Table 1. The comparison of three approaches.
 
 Features | Pixel/patch-based CNN | Image-based FCN | Combined approach
 ------------- | ------------ | ------------- | -------------
