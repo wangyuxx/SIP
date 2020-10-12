@@ -54,16 +54,19 @@ whereas approach (2) can do a better job using some detail-perservation tricks, 
     * Approach (1) is trained on pixel samples which are relatively easier to obtain with a large quantity, 
 whereas approach 2 is trained on much less image samples whose full label maps are difficult to obtain;
 
-Features | Pixel/patch-based CNN | Image-based FCN | Combined approach
-------------- | ------------ | ------------- | -------------
-Backbone | ResNet | ResNet | Resnet
-Field of view | small | big if many Conv layers | big if many Conv layers
-Detail preservation capability | weak | stronger | stronger
-Computational efficiency | low | higher | higher during prediciton
-GPU memory consumption | large | smaller | smaller
-Training samples | many training pixels | sparse label maps | full label mamps
-
 * ***Combine approach (1) and (2) to develop a semi-supervised classification approach*** (3).
+
+        Table 1. The comparison of the three approaches.
+
+        Features | Pixel/patch-based CNN | Image-based FCN | Combined approach
+        ------------- | ------------ | ------------- | -------------
+        Backbone | ResNet | ResNet | Resnet
+        Field of view | small | big if many Conv layers | big if many Conv layers
+        Detail preservation capability | weak | stronger | stronger
+        Computational efficiency | low | higher | higher during prediciton
+        GPU memory consumption | large | smaller | smaller
+        ***Training samples | many training pixels | sparse label maps | full label maps***
+
 
 ## Experiments
 
