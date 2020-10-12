@@ -9,7 +9,7 @@ sentinel1_params:
     sentinel1_zip_dir: /home/l44xu/SIP/data/sentinel1_raw_zip
     to_unzip: True
 
-    multilook_num: 1
+    multilook_num: 4
     low_percentage_to_remove: 0.001
     high_percentage_to_remove: 0.001
 
