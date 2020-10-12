@@ -83,6 +83,7 @@ some pixels on these maps have labels, and most pixels do not have labels;
 1. **Edit config file.** 
     1. Copy the ***config_os.yaml.bak*** in the config folder and change its name to ***config_os.yaml***;
     1. Find ***sentinel1_params***, ***raw_data_dir***, ***dirs***; ***For all directories in these three parameters, make sure you have changed them to your own directories***.
+    1. Make sure the ***train_params -> net_type*** is ***ss_res***. 
  
 1. **Download data.**
     1. Go to https://search.asf.alaska.edu/#/. Please copy *POLYGON((-169.5982 69.4421,-157.2591 71.9421,-141.6889 70.0305,-135.3576 69.9672,-127.5021 71.384,-139.323 78.3118,-164.763 80.1023,-169.5982 69.4421))* and paste it to **Area of Interet** in the webpage. Click ***Filters*** and set ***starting date*** and ***end date*** to be 2019.09.01, ***File type*** to be L1 GRD MD, and ***Beam Mode*** to be EW. Click on ***Search***, and you should find 10 scenes. Download them. 
@@ -157,5 +158,43 @@ some pixels on these maps have labels, and most pixels do not have labels;
     1. Check the ***test accuracies*** in the "test.log" file under the ***dirs->save->model*** folder in the config file.  
     1. Compare the test accuracies with the training accuracies and validations accuracies in the previous step. 
     1. Take a look at the label maps of all the testing scenes. 
+
+
+## Procedures of Experiment 2
+
+1. **Change the config file**
+    1. Open the ***config_os.yaml*** file and change the ***train_params -> net_type*** to ***dip_res***. 
+    1. In the config file, also search ***batch_size_train***, ***batch_size_val***, ***batch_size_test***, and change their values to be 1. 
+    1. Change ***lr*** in the config file to be ***0.01***. 
+    1. Change ***var*** in the config file to be ***0.1***. 
+
+1. **Train and test the classifier using the training and test scenes**
+    1. **Train classifier.** 
+        1. Click on ***'Train classifier'*** under ***Classification*** menu and then choose the .yaml config file you just edited. 
+        1. Once training is finished, go to ***raw_data_dir*** in the config file to take a look at the generated label maps of the training images. 
+        1. Go to ***dirs->save->model*** folder in the config file, check ***the training and validation accuracies*** in the ***train.log*** file.
+
+    1. **Test classifier on all testing scenes** 
+        1. Run ***"Test classifier"*** under ***Classification***. It will test the trained classifier on all test scenes. 
+        1. Check the ***test accuracies*** in the "test.log" file under the ***dirs->save->model*** folder in the config file.  
+        1. Compare the test accuracies with the training accuracies and validations accuracies in the previous step. 
+        1. Take a look at the label maps of all the testing scenes. 
+
+
+1. **Compare the test accuracies with the final test accuracies in Experiment 1**
+
+## Procedures of Experiment 3
+
+1. **Make sure the config file is the same with Experiment 2**
+
+1. **Use the predicted label maps as ground truth**
+    1. Cut the training, validation and test masks for all the scenes in the ***raw_data_params -> raw_data_dir*** folder, and paste them to a different folder. 
+    1. Rename the labels maps produced by the classifier in Experiment 2. For each scene, make sure that the new name of the label map is the same with the cutted training, validation or test masks in the previous step. 
+
+1. **Train and test the classifier using the training and test scenes**
+    1. The training procedures are similar with the final training procdures in Experiment 2. 
+    1. The test procedures are similar with the final test procedures in Experiment 2. 
+
+1. **The test accuracies here should be higher than those in Experiment 1 and Experiment 2**
 
 
