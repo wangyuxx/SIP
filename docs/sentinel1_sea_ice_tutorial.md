@@ -42,7 +42,7 @@ change researchers and end-users.
 As the first step, this tutorial has the following objectives:
 
 * ***Compare the performance of two typical CNN architectures***, i.e., (1) pixel/patch-based CNN architecture that outputs
-the label of a single pixel, and (2) image-based fully convolutional CNN architecture that outputs a label map of 
+the label of a single pixel, and (2) image-based fully convolutional neural (FCN) network architecture that outputs a label map of 
 all pixels on the image. 
 
     * Both approaches are residual neural network;
@@ -53,6 +53,15 @@ whereas approach (2) can do a better job using some detail-perservation tricks, 
     * Due to patch-overlapping, approach (1) requires more GPU memories during training;
     * Approach (1) is trained on pixel samples which are relatively easier to obtain with a large quantity, 
 whereas approach 2 is trained on much less image samples whose full label maps are difficult to obtain;
+
+Features | Pixel/patch-based CNN | Image-based FCN | Combined approach
+------------- | ------------ | ------------- | -------------
+Backbone | ResNet | ResNet | Resnet
+Field of view | small | big if many Conv layers | big if many Conv layers
+Detail preservation capability | weak | stronger | stronger
+Computational efficiency | low | higher | higher during prediciton
+GPU memory consumption | large | smaller | smaller
+Training samples | many training pixels | sparse label maps | full label mamps
 
 * ***Combine approach (1) and (2) to develop a semi-supervised classification approach*** (3).
 
