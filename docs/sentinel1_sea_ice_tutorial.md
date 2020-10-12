@@ -56,7 +56,7 @@ whereas approach 2 is trained on much less image samples whose full label maps a
 
 * ***Combine approach (1) and (2) to develop a semi-supervised classification approach*** (3).
 
-<center> Table 1. The comparison of three approaches. </center>
+** Table 1. The comparison of three approaches. **
 
 Features | Pixel/patch-based CNN | Image-based FCN | Combined approach
 ------------- | ------------ | ------------- | -------------
@@ -65,7 +65,7 @@ Field of view | small | big if many Conv layers | big if many Conv layers
 Detail preservation capability | weak | stronger | stronger
 Computational efficiency | low | higher | higher during prediciton
 GPU memory consumption | large | smaller | smaller
-***Training samples | many training pixels | sparse label maps | full label maps***
+Training samples | many training pixels | sparse label maps | ***full label maps***
 
 
 ## Experiments
