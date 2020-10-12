@@ -58,7 +58,7 @@ whereas approach 2 is trained on much less image samples whose full label maps a
 
 Table 1. The comparison of three approaches.
 
-&nbsp | Pixel/patch-based CNN | Image-based FCN | Combined approach
+&nbsp; | Pixel/patch-based CNN | Image-based FCN | Combined approach
 ------------- | ------------ | ------------- | -------------
 Backbone | ResNet | ResNet | Resnet
 Field of view | small | big if many Conv layers | big if many Conv layers
